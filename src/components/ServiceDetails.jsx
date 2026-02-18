@@ -12,7 +12,7 @@ export default function ServiceDetailPage() {
     <section className="detailWrap">
       <div className="detailGrid">
         <aside className="detailSidebar">
-          <h3 className="sideTitle">HİZMETLERİMİZ</h3>
+          <h3 className="sideTitle">ჩვენი სერვისები</h3>
           <nav className="sideNav">
             {services.map((s) => (
               <Link
@@ -33,8 +33,12 @@ export default function ServiceDetailPage() {
             <img src={current.hero} alt={current.title} />
           </div>
 
-          <h2 className="detailH2">{current.contentTitle}</h2>
-          <p className="detailP">{current.content}</p>
+          {current.sections.map((sec, i) => (
+            <div key={i} className="detailSection">
+              {sec.title && <h2 className="detailH2">{sec.title}</h2>}
+              <p className="detailP">{sec.text}</p>
+            </div>
+          ))}
         </main>
       </div>
     </section>

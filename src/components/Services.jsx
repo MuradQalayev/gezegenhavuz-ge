@@ -5,7 +5,7 @@ import "../styles/allservices.css";
 export default function Services() {
   return (
     <section className="servicesPage">
-      <h1 className="servicesTitle">HİZMET ALANLARIMIZ</h1>
+      <h1 className="servicesTitle">ჩვენი მომსახურების სფეროები</h1>
 
       <div className="servicesCards">
         {services.map((s) => (
