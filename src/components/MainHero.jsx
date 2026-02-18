@@ -18,14 +18,14 @@ const slides = [
     title: "თანამედროვე დიზაინი, მაღალი ხარისხის შესრულება",
     subtitle: "ჩვენი პროექტები",
     btnText: "გალერეის ნახვა",
-    btnLink: "/gallery",
+    btnLink: "/contact",
   },
     {
     img: "  http://www.gezegenhavuz.com/wp-content/uploads/2021/05/havuz-keyfi-1.jpg",
     title: "თანამედროვე დიზაინი, მაღალი ხარისხის შესრულება",
     subtitle: "ჩვენი პროექტები",
     btnText: "გალერეის ნახვა",
-    btnLink: "/gallery",
+    btnLink: "/contact",
   },
 ];
 
