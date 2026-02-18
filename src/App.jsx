@@ -11,6 +11,7 @@ import "aos/dist/aos.css";
 import FilteredGallery from "./components/FilteredGallery";
 import Preloader from "./components/Preloader"
 import CookieBanner from "./components/CookieBanner";
+import ServiceDetails from "./components/ServiceDetails";
 
 
 
@@ -50,7 +51,6 @@ const App = () => {
         <Route path="/" index element={<Main />} />
         <Route
           path="/about"
-          index
           element={<About cookieConsent={cookieConsent} />}
         />
         <Route
@@ -58,8 +58,9 @@ const App = () => {
           index
           element={<Contact cookieConsent={cookieConsent} />}
         />
-        <Route path="/gallery" index element={<FilteredGallery />} />
-        <Route path="/services" index element={<Services />} />
+        <Route path="/gallery"  element={<FilteredGallery />} />
+        <Route path="/services"  element={<Services />} />
+        <Route path = "/services/:slug" element={<ServiceDetails/>}/>
       </Routes>
 
       <Footer />

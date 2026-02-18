@@ -1,5 +1,7 @@
 import {  Navigate, NavLink,Link } from "react-router-dom";
 import "../styles/navbar.css";
+import { services } from "../data/serv";
+
 
 export default function Navbar() {
   const logoUrl =
@@ -14,7 +16,6 @@ export default function Navbar() {
           <div>ემოცია — ჩვენგან...</div>
         </div>
 
-        
         <Link to={"/"} className="logoWrap">
           <img className="logo" src={logoUrl} alt="Gezegen Havuz" />
         </Link>
@@ -46,12 +47,26 @@ export default function Navbar() {
           >
             ჩვენს შესახებ
           </NavLink>
-          <NavLink
-            to="/services"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
-            ჩვენი სერვისები
-          </NavLink>
+          <div className="navDropdown">
+            <NavLink to="/services" className="navLink">
+              HİZMETLERİMİZ ▾
+            </NavLink>
+
+            <div className="dropdownMenu">
+              {services.map((s) => (
+                <NavLink
+                  key={s.slug}
+                  to={`/services/${s.slug}`}
+                  className={({ isActive }) =>
+                    `dropdownItem ${isActive ? "activeDrop" : ""}`
+                  }
+                >
+                  {s.title}
+                </NavLink>
+              ))}
+            </div>
+          </div>
+
           <NavLink
             to="/gallery"
             className={({ isActive }) => (isActive ? "active" : "")}

@@ -1,16 +1,35 @@
-import React from 'react'
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import Lottie from "lottie-react";
+import { Link } from "react-router-dom";
+import { services } from "../data/serv";
+import "../styles/allservices.css";
 
-
-const Services = () => {
+export default function Services() {
   return (
-    <DotLottieReact
-      src="https://lottie.host/6499a281-8383-49ce-8477-05c3077d5b0c/qCOILFr0HM.lottie"
-      loop
-      autoplay
-    />
+    <section className="servicesPage">
+      <h1 className="servicesTitle">HİZMET ALANLARIMIZ</h1>
+
+      <div className="servicesCards">
+        {services.map((s) => (
+          <Link
+            key={s.slug}
+            to={`/services/${s.slug}`}
+            className="serviceCardLink"
+          >
+            <article className="serviceCard2">
+              <div className="serviceImgWrap">
+                <img src={s.hero} alt={s.title} />
+                <div className="serviceImgOverlay">
+                  <h3>{s.title}</h3>
+                </div>
+              </div>
+
+              <div className="serviceDescRow">
+                <p>{s.short}</p>
+                <span className="serviceArrow">›</span>
+              </div>
+            </article>
+          </Link>
+        ))}
+      </div>
+    </section>
   );
 }
-
-export default Services
