@@ -3,6 +3,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "../styles/hero.css";
+import { Link } from "react-router-dom";
 
 export default function MainHero() {
 const slides = [
@@ -50,9 +51,9 @@ const slides = [
               <div className="heroContent">
                 <h1>{s.title}</h1>
                 <p>{s.subtitle}</p>
-                <a className="heroBtn" href={s.btnLink}>
+                <Link className="heroBtn" to={s.btnLink}>
                   {s.btnText}
-                </a>
+                </Link>
               </div>
               <div className="heroWave" aria-hidden="true">
                 <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
