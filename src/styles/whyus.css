@@ -1,0 +1,127 @@
+.whySection {
+  background: #fff;
+  padding: clamp(55px, 7vw, 90px) 20px;
+}
+
+.whyContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.whyTitle {
+  text-align: center;
+  color: #0a66a8;
+  font-size: clamp(30px, 4.2vw, 56px);
+  letter-spacing: clamp(0.5px, 0.25vw, 2px);
+  margin: 0;
+  font-weight: 700;
+}
+
+.whyDivider {
+  width: 120px;
+  max-width: 35%;
+  height: 2px;
+  background: #e6e6e6;
+  margin: 18px auto clamp(35px, 5vw, 55px);
+}
+
+.whyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(26px, 4vw, 60px);
+}
+
+.whyCard {
+  text-align: center;
+}
+
+.whyIconWrap {
+  width: clamp(72px, 8vw, 92px);
+  height: clamp(72px, 8vw, 92px);
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: #2da5df;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: clamp(26px, 3vw, 34px);
+  color: #fff;
+}
+
+.whyCardTitle {
+  font-size: clamp(18px, 2.2vw, 26px);
+  margin: 0 0 12px;
+  font-weight: 800;
+  color: #222;
+}
+
+.whyText {
+  margin: 0 auto;
+  max-width: 380px;
+  font-size: clamp(14px, 1.4vw, 16px);
+  line-height: 1.9;
+  color: #444;
+}
+
+@media (max-width: 1000px) {
+  .whyGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .whyGrid {
+    grid-template-columns: 1fr;
+  }
+  .whyText {
+    max-width: 92%;
+  }
+}
+
+.whyTitle,
+.whyDivider,
+.whyCard {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+
+.whyTitle.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.whyDivider.in {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 120ms;
+}
+
+.whyCard.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.whyCard.in .whyIconWrap {
+  animation: iconPop 520ms ease both;
+}
+
+@keyframes iconPop {
+  0% { transform: scale(0.85); }
+  60% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whyTitle,
+  .whyDivider,
+  .whyCard {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+  .whyCard.in .whyIconWrap {
+    animation: none;
+  }
+}

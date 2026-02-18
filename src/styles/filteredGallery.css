@@ -1,0 +1,88 @@
+.fgSection {
+  padding: 60px 20px;
+  background: #fff;
+}
+
+.fgTitle {
+  text-align: center;
+  color: #0a66a8;
+  font-size: 34px;
+  margin: 0 0 30px;
+  font-weight: 800;
+}
+
+.fgFilters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px 26px;
+  margin-bottom: 35px;
+}
+
+.fgFilterBtn {
+  border: 0;
+  background: transparent;
+  font-weight: 700;
+  font-size: 16px;
+  color: #222;
+  cursor: pointer;
+  padding: 8px 10px;
+}
+
+.fgFilterBtn.active {
+  color: #0a66a8;
+}
+
+.fgLoading {
+  text-align: center;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.fgGrid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+
+.fgItem {
+  display: block;
+  background: #eee;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.fgItem.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fgItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 250ms ease;
+}
+
+.fgItem:hover img {
+  transform: scale(1.04);
+}
+
+@media (max-width: 1000px) {
+  .fgGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .fgGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
