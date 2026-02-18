@@ -1,8 +1,7 @@
-// src/components/Contact.jsx
 import React, { useEffect, useState } from "react";
 import "../styles/contact.css";
 
-export default function Contact() {
+export default function Contact({ cookieConsent }) {
   const logo =
     "https://www.gezegenhavuz.com/wp-content/uploads/2021/06/gezegen-havuz-logo-png.png";
 
@@ -13,7 +12,6 @@ export default function Contact() {
     message: "",
   });
 
-  // Modal state
   const [modalOpen, setModalOpen] = useState(false);
   const [secondsLeft, setSecondsLeft] = useState(5);
 
@@ -25,7 +23,6 @@ export default function Contact() {
     setSecondsLeft(5);
   };
 
-  // Countdown + auto-close
   useEffect(() => {
     if (!modalOpen) return;
 
@@ -72,7 +69,6 @@ export default function Contact() {
         <div className="contactDivider" />
 
         <div className="contactGrid">
-          {/* LEFT */}
           <aside className="contactLeft">
             <img className="contactLogo" src={logo} alt="Gezegen Havuz" />
 
@@ -198,14 +194,28 @@ export default function Contact() {
           </div>
         </div>
       )}
-      <div className="contactMap">
-        <iframe
-          src="https://www.google.com/maps?q=41.9543318,45.813161&z=15&output=embed"
-          loading="lazy"
-          allowFullScreen
-          title="map"
-        />
-      </div>
+      {cookieConsent === "accepted" ? (
+        <div className="contactMap">
+          <iframe
+            src="https://www.google.com/maps?q=41.9543318,45.813161&z=15&output=embed"
+            loading="lazy"
+            allowFullScreen
+            title="map"
+          />
+        </div>
+      ) : (
+        <div className="embedPlaceholder">
+          Please accept cookies to view the map.
+          <a
+            className="embedLink"
+            href="https://www.google.com/maps?q=41.9543318,45.813161"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open in Google Maps
+          </a>
+        </div>
+      )}
     </section>
   );
 }

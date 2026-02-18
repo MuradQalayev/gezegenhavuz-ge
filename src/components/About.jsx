@@ -1,9 +1,9 @@
 import "../styles/about.css";
 
 
-export default function About() {
-
-  const logo = "http://www.gezegenhavuz.com/wp-content/uploads/2021/06/gezegen-havuz-logo-png.png";
+export default function About({ cookieConsent }) {
+  const logo =
+    "http://www.gezegenhavuz.com/wp-content/uploads/2021/06/gezegen-havuz-logo-png.png";
 
   return (
     <section className="aboutSection">
@@ -41,17 +41,31 @@ export default function About() {
       </div>
 
       <div className="aboutBottom container">
-        <div className="aboutVideo">
-          <iframe
-            width="100%"
-            height="320"
-            src="https://www.youtube.com/embed/lOv8mib4Omk?start=1"
-            title="Gezegen Havuz"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </div>
+        {cookieConsent === "accepted" ? (
+          <div className="aboutVideo">
+            <iframe
+              width="100%"
+              height="320"
+              src="https://www.youtube.com/embed/lOv8mib4Omk?start=1"
+              title="Gezegen Havuz"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+        ) : (
+          <div className="embedPlaceholder">
+            Please accept cookies to view this content.
+            <a
+              className="embedLink"
+              href="https://www.youtube.com/watch?v=lOv8mib4Omk"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Watch on YouTube
+            </a>
+          </div>
+        )}
 
         <div className="aboutLogo">
           <img src={logo} alt="Gezegen Havuz" />

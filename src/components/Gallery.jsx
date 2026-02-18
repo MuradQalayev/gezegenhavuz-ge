@@ -76,10 +76,10 @@ setItems((prev) =>
 
   return (
     <section className="gallerySection">
-      <h2 className="galleryTitle">Daha Fazla Fotoğraf Gör</h2>
+      <h2 className="galleryTitle"> მეტის ფოტოს ნახვა</h2>
 
       <div className="galleryGrid">
-        {items.slice(2,-3).map((img) => (
+        {items.slice(2, -3).map((img) => (
           <a
             key={img.id}
             className="galleryItem"

@@ -1,4 +1,4 @@
-import {  NavLink } from "react-router-dom";
+import {  Navigate, NavLink,Link } from "react-router-dom";
 import "../styles/navbar.css";
 
 export default function Navbar() {
@@ -14,9 +14,10 @@ export default function Navbar() {
           <div>ემოცია — ჩვენგან...</div>
         </div>
 
-        <div className="logoWrap">
+        
+        <Link to={"/"} className="logoWrap">
           <img className="logo" src={logoUrl} alt="Gezegen Havuz" />
-        </div>
+        </Link>
 
         <div className="contact">
           <div className="contactItem">
@@ -86,7 +87,7 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
           >
-             🇬🇧
+            🇬🇧
           </a>
         </button>
       </div>
