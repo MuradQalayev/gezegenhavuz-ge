@@ -12,6 +12,7 @@ import FilteredGallery from "./components/FilteredGallery";
 import Preloader from "./components/Preloader"
 import CookieBanner from "./components/CookieBanner";
 import ServiceDetails from "./components/ServiceDetails";
+import ScrollToTop from "./components/ScrollToTop";
 
 
 
@@ -46,7 +47,7 @@ const App = () => {
     <>
       <Preloader />
       <Navbar />
-
+      <ScrollToTop/>
       <Routes>
         <Route path="/" index element={<Main />} />
         <Route

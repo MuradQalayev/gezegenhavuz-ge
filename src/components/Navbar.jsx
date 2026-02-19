@@ -7,19 +7,26 @@ export default function Navbar() {
   const logoUrl =
     "http://www.gezegenhavuz.com/wp-content/uploads/2021/06/gezegen-havuz-logo-png.png";
 
+  const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+
   const dropdownRef = useRef(null);
 
   useEffect(() => {
     const onDocClick = (e) => {
-      if (!dropdownRef.current) return;
-      if (!dropdownRef.current.contains(e.target)) setServicesOpen(false);
+      // close only services dropdown if clicked outside it
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setServicesOpen(false);
+      }
     };
     document.addEventListener("mousedown", onDocClick);
     return () => document.removeEventListener("mousedown", onDocClick);
   }, []);
 
-  const closeDropdown = () => setServicesOpen(false);
+  const closeAll = () => {
+    setMenuOpen(false);
+    setServicesOpen(false);
+  };
 
   return (
     <header className="siteHeader">
@@ -30,7 +37,7 @@ export default function Navbar() {
           <div>ემოცია — ჩვენგან...</div>
         </div>
 
-        <Link to="/" className="logoWrap">
+        <Link to="/" className="logoWrap" onClick={closeAll}>
           <img className="logo" src={logoUrl} alt="Gezegen Havuz" />
         </Link>
 
@@ -46,20 +53,26 @@ export default function Navbar() {
         </div>
       </div>
 
-      <nav className="navRow">
+      {/* MOBILE TOGGLE BUTTON (shows only on phone via CSS) */}
+      <div className="container mobileBar">
+        <button
+          className="burger"
+          type="button"
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-expanded={menuOpen}
+          aria-label="Open menu"
+        >
+          ☰
+        </button>
+      </div>
+
+      <nav className={`navRow ${menuOpen ? "mobileOpen" : ""}`}>
         <div className="container navLinks">
-          <NavLink
-            to="/"
-            end
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
+          <NavLink to="/" end onClick={closeAll}>
             მთავარი
           </NavLink>
 
-          <NavLink
-            to="/about"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
+          <NavLink to="/about" onClick={closeAll}>
             ჩვენს შესახებ
           </NavLink>
 
@@ -68,7 +81,6 @@ export default function Navbar() {
             className={`navDropdown ${servicesOpen ? "open" : ""}`}
             ref={dropdownRef}
           >
-            {/* Desktop hover uses CSS, Mobile uses button */}
             <button
               type="button"
               className="navLink navDropdownBtn"
@@ -82,7 +94,7 @@ export default function Navbar() {
               <NavLink
                 to="/services"
                 className="dropdownItem"
-                onClick={closeDropdown}
+                onClick={closeAll}
               >
                 ყველა სერვისი
               </NavLink>
@@ -91,10 +103,8 @@ export default function Navbar() {
                 <NavLink
                   key={s.slug}
                   to={`/services/${s.slug}`}
-                  className={({ isActive }) =>
-                    `dropdownItem ${isActive ? "activeDrop" : ""}`
-                  }
-                  onClick={closeDropdown}
+                  className="dropdownItem"
+                  onClick={closeAll}
                 >
                   {s.title}
                 </NavLink>
@@ -102,23 +112,16 @@ export default function Navbar() {
             </div>
           </div>
 
-          <NavLink
-            to="/gallery"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
+          <NavLink to="/gallery" onClick={closeAll}>
             ფოტო გალერეა
           </NavLink>
 
-          <NavLink
-            to="/contact"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
+          <NavLink to="/contact" onClick={closeAll}>
             კონტაქტი
           </NavLink>
         </div>
       </nav>
 
-      {/* IMPORTANT: don’t nest <a> inside <button> */}
       <div className="langRow container">
         <span className="langLabel">აირჩიეთ ენა:</span>
 
